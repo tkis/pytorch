@@ -6367,8 +6367,6 @@ op_db: List[OpInfo] = [
            sample_inputs_func=sample_inputs_linalg_cholesky,
            gradcheck_wrapper=gradcheck_wrapper_hermitian_input,
            decorators=[skipCUDAIfNoMagma, skipCUDAIfRocm, skipCPUIfNoLapack],
-           # RuntimeError: torch.cholesky: U(1,1) is zero, singular U.
-           test_neg_view=False,
            skips=(
                # Gradcheck for complex generates invalid inputs for this function
                DecorateInfo(unittest.skip("Skipped!"), 'TestGradients', 'test_forward_mode_AD', dtypes=complex_types()),)),
@@ -7034,8 +7032,6 @@ op_db: List[OpInfo] = [
            sample_inputs_func=sample_inputs_linalg_cholesky,
            gradcheck_wrapper=gradcheck_wrapper_hermitian_input,
            decorators=[skipCUDAIfNoMagmaAndNoCusolver, skipCUDAIfRocm, skipCPUIfNoLapack],
-           # RuntimeError: torch.linalg.cholesky: U(1,1) is zero, singular U.
-           test_neg_view=False,
            skips=(
                # Gradcheck for complex generates invalid inputs for this function
                DecorateInfo(unittest.skip("Skipped!"), 'TestGradients', 'test_forward_mode_AD', dtypes=complex_types()),),
